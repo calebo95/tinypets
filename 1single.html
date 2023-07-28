@@ -2,13 +2,19 @@
 title: Sentiment
 layout: default
 ---
-<form action="submit()">
-  <label for="prmopt">Input:</label><br>
+<form id="myForm">
+  <label for="prompt">Input:</label><br>
   <input type="text" id="prompt" name="prompt"><br>
   <input type="submit" value="Submit">
 </form>
 <div id="results"></div>
 <script>
+  document.getElementById("myForm").addEventListener("submit", function(event){
+    event.preventDefault();
+    let inputValue = document.getElementById("prompt").value;
+    analyze(inputValue);
+  });
+
   async function analyze(prompt) {
     const response = await fetch('https://calebo95-pets.hf.space/+/api/predict/', {
       method: "POST", body: JSON.stringify({ "data": prompt }),
@@ -18,8 +24,5 @@ layout: default
     console.log(JSON.stringify(json));
     // const label = json['data'][0]['confidences'][0]['label'];
     // results.innerHTML = `<br/><img src="${reader.result}" width="300"> <p>${label}</p>`
-  }
-  function submit(event) {
-    analyze(event.value);
   }
 </script>
