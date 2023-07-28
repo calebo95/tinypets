@@ -18,7 +18,7 @@ layout: default
   async function analyze(prompt) {
     var promptList = [];
     promptList.append(prompt);
-    const response = await fetch('https://calebo95-pets.hf.space/predict/', {
+    const response = await fetch('https://calebo95-pets.hf.space/api/predict/', {
       method: "POST", body: JSON.stringify({ "data": promptList }),
       headers: { "Content-Type": "application/json" }
     });
