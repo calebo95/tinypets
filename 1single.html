@@ -16,7 +16,7 @@ layout: default
   });
 
   async function analyze(prompt) {
-    const response = await fetch('https://calebo95-pets.hf.space/+/api/predict/', {
+    const response = await fetch('https://calebo95-pets.hf.space/predict/', {
       method: "POST", body: JSON.stringify({ "data": prompt }),
       headers: { "Content-Type": "application/json" }
     });
