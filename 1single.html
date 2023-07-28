@@ -23,7 +23,10 @@ layout: default
       headers: { "Content-Type": "application/json" }
     });
     const json = await response.json();
-    const label = json['data'][0]['label'];
-    results.innerHTML = `<p>${label}</p>`
+    firstItemString = json.data[0].replace(/'/g, '"');
+    let firstItem = JSON.parse(firstItemString);
+
+    let label = firstItem[0].label;
+    results.innerHTML = `<p>The feeling is: ${label}</p>`
   }
 </script>
